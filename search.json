@@ -1,0 +1,92 @@
+[
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "Get Started with R and Master your toolboxes\nThis book is structured around 4 main parts :\nTo give you the skills, as a Supply Chain professional, to handle efficiently and easily most of the data processing situations that you will encounter.\nWe will get started with R, and learn in the first toolbox how to perform the most common ETL (Extract Transform Load) activities.\nOnce the data processing is done, you will need to visualize the data, usually through charts and tables. So the second and third toolboxes will focus on the Data Visualization (Charts and Tables).",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "intro.html#hands-on-supply-chain",
+    "href": "intro.html#hands-on-supply-chain",
+    "title": "Introduction",
+    "section": "Hands on Supply Chain",
+    "text": "Hands on Supply Chain\n\nDemand and Supply Planning\nThis second part will be a focus on Supply Chain, and particularly the Demand and Supply Planning, using the R packageplanr.\nI’ve created the first function of planr in 2016, and keep updating and developing this package. I use it daily in my work. This package is enriched regularly thanks to the various ideas and suggestions of the persons I have the chance to meet.\nWe will go through each function and understand how they work on small examples, and then apply them to several, larger, user cases\n\n\nSales Forecasting and analysis\nR was developed by statisticians and is a powerful tool for data analysis and to run statistical models. In this section, we will then see how to :\n\ncreate Statistical Forecasts : using the classic Time Series approaches and Machine Learning.\nperform Sales Analysis : applying a RFM (Recency | Frequency | Monetary) methodology.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "intro.html#operational-research",
+    "href": "intro.html#operational-research",
+    "title": "Introduction",
+    "section": "Operational Research",
+    "text": "Operational Research\nWe will use the R package lpSolve to identify the optimal solution to a defined problem, for example :\n\nto balance a production planning, between production charge and available capacity.\nto find the shortest route to deliver some products to different customers.\n…\n\nA definitely “nice to have” skill in our Supply Chain toolbox.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "intro.html#r-shiny",
+    "href": "intro.html#r-shiny",
+    "title": "Introduction",
+    "section": "R shiny",
+    "text": "R shiny\nIn this last part we’ll learn how to create web apps using the wonderful shiny library.\nShiny is a real game changer, to move from BI tools to software development and to create beautiful and powerful web apps\nUsing R and Shiny, with only a few lines of R codes, you will be able to create your own Supply Chain softwares, to run your Demand and Supply Planning as well as your S&OP process.\nWe will start by creating a basic Shiny app, then introduce more capabilities related to the navigation part, and see learn how to use reactive elements, modules and finally create a write-back table to capture user’s inputs.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "1  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Demand and Supply Planning with R",
+    "section": "",
+    "text": "Preface",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#excel",
+    "href": "index.html#excel",
+    "title": "Demand and Supply Planning with R",
+    "section": "Excel",
+    "text": "Excel\nI’ve started my career in Supply Chain in 2004, spent half of my work experience in Asia (Singapore, Japan, Taiwan), and the other half in France, working across different fields (pharmaceutical, cosmetics, medical devices, Food & Beverages) and through different activities, in factories, distribution centers, commercial operations and digital.\nA common point among all those roles, years and companies was : the high usage of data.\nData, mainly stored in excel or csv files, were needed to monitor the current state of an activity, and especially to project its evolution.\nFor example :\n\nhistorical sales data tell us about the current performance, and are also used to calculate Statistical Sales Forecasts.\nthen, combined with stocks, we can calculate a production plan and project some inventories.\n\nThis led frequently to large datasets, with multiple variables and formats. They were also very often not initially in the easiest format to analyze them, and required some transformations. In order to use them properly, it was needed, back then in excel: to clean the data, to aggregate some data (pivot table), to perform some mergers (vlookup) and to apply various data processing (calculations).\nIt was of course possible to automate those data handlings using some VBA macros. Some issues appeared when someone had to debug a macro written a long time ago by someone else (if not always documented), or if the amount of data to handle became too large (taking several minutes to process them).\nBesides, outside the (important) topic of the data processing, the visualization through excel was quite limited.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#bi-tools",
+    "href": "index.html#bi-tools",
+    "title": "Demand and Supply Planning with R",
+    "section": "BI tools",
+    "text": "BI tools\nIn the early 2010s, the BI solutions, especially Qlikview & QlikSense, Tableau and PowerBI appeared, making a big part of the data processing extremely easy, and of course enhancing the visualization. It also allowed to easily share some dashboards on the web.\nI used them a lot during 5 years. They brought many very useful insights, in the area of “descriptive analytics”.\nHowever, they lack 4 points, especially in the areas of “predictive & prescriptive analytics” :\n\nthe capacity to perform easily some “advanced” calculations.\n\nfor example related to time series forecasting, projected inventories, DRP (Distribution Requirement Planning), or to run an optimization calculation (also called “Operational Research”, to find the optimal solution to a given problem).\n\nwhen it comes to analysis : lack of (at least in an easy way) flexibility to combine different created objects into a new one.\nabout visuals : all the basics are covered, but they remain limited, especially when it comes to create specific cockpits.\nand finally, outside seeing the data : not always possible for the user to change some data directly in the User Interface (UI) and run some calculations inside the app.\n\nI then figured out that actually in my Supply Chain role, outside a BI tool, I needed a software. A simple software able to :\n\nperform the different Supply Chain calculations I need (statistical forecasts, projected inventories, DRP,…).\ndisplay some insightful visualizations, especially the ones I couldn’t build with those BI solutions.\n\nI then started using the R language.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "index.html#r-language",
+    "href": "index.html#r-language",
+    "title": "Demand and Supply Planning with R",
+    "section": "R language",
+    "text": "R language\nIn 2015, I was still working in Singapore, and one of my colleagues from sanofi, Yannick, did some researches and came out with one idea : let’s use a statistical programming language called R. The language, unknown to us at that time, seemed to be wonderful to solve our issues.\nR is a popular open-source programming language and is specifically designed for statistical computing, data analysis, and high-quality graphics. It is widely used by researchers, data scientists, and statisticians for its extensive libraries and robust data visualization tools. R consistently ranks among the top 10 programming languages worldwide.\nAs per today, R is widely considered as the best programming language for pure statistical analysis and visualization.\nIt’s been now 10 years that I’m using R daily in my job in Supply Chain. The language, supported by a very active and vibrant users community, progresses very rapidly each year. It also became…my second passion (my first one being skateboarding!).\nI try to share this passion at work with my colleagues, and also with some students. I’ve been teaching some classes in masters in La Rochelle (a city on the west coast of France) for 5 years about how to use the R language in Supply Chain.\nThis book is about sharing this passion about data, supply chain, and R.",
+    "crumbs": [
+      "Preface"
+    ]
+  }
+]
