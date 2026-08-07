@@ -1,0 +1,171 @@
+# Preface {.unnumbered}
+
+# This book in a nutshell
+
+This book is for Supply Chain professionals and students who want to use data science in their daily work.
+
+You will master some key toolboxes for data handling, data visualization, and to run some classic, and advanced, modeling and calculations related to Demand and Supply Planning or S&OP process.
+
+At the end of this book, you will have the skills and tools to create and deploy quickly some stunning data analytics solutions -*web apps and softwares*- for Supply Chain, using the **R language** and **Shiny**.
+
+# Why this book ?
+
+> starting from Excel, to BI tools and then to coding
+
+## Excel
+
+I've started my career in Supply Chain in 2004, spent half of my work experience in Asia (Singapore, Japan, Taiwan), and the other half in France, working across different fields (pharmaceutical, cosmetics, medical devices, Food & Beverages) and through different activities, in factories, distribution centers, commercial operations and digital.
+
+A common point among all those roles, years and companies was : the high usage of data.
+
+Data, mainly stored in excel or csv files, were needed to ***monitor the current state*** of an activity, and especially to ***project its evolution***.
+
+For example :
+
+-   historical sales data tell us about the current performance, and are also used to calculate Statistical Sales Forecasts.
+
+-   then, combined with stocks, we can calculate a production plan and project some inventories.
+
+This led frequently to large datasets, with multiple variables and formats. They were also very often not initially in the easiest format to analyze them, and required some transformations. In order to use them properly, it was needed, back then in excel: to clean the data, to aggregate some data (pivot table), to perform some mergers (vlookup) and to apply various data processing (calculations).
+
+It was of course possible to automate those data handlings using some VBA macros. Some issues appeared when someone had to debug a macro written a long time ago by someone else (if not always documented), or if the amount of data to handle became too large (taking several minutes to process them).
+
+Besides, outside the (important) topic of the data processing, the visualization through excel was quite limited.
+
+## BI tools
+
+In the early 2010s, the BI solutions, especially Qlikview & QlikSense, Tableau and PowerBI appeared, making a big part of the data processing extremely easy, and of course enhancing the visualization. It also allowed to easily share some dashboards on the web.
+
+I used them a lot during 5 years. They brought many very useful insights, in the area of "***descriptive analytics***".
+
+However, they lack 4 points, especially in the areas of "***predictive & prescriptive analytics***" :
+
+-   the capacity to perform easily some "advanced" calculations.
+
+    -   for example related to time series forecasting, projected inventories, DRP (Distribution Requirement Planning), or to run an optimization calculation (also called "Operational Research", to find the optimal solution to a given problem).
+
+-   when it comes to analysis : lack of (at least in an easy way) flexibility to combine different created objects into a new one.
+
+-   about visuals : all the basics are covered, but they remain limited, especially when it comes to create specific cockpits.
+
+-   and finally, outside seeing the data : not always possible for the user to change some data directly in the User Interface (UI) and run some calculations inside the app.
+
+I then figured out that actually in my Supply Chain role, **outside a BI tool, I needed a software**. A simple software able to :
+
+-   **perform** the **different Supply Chain calculations** I need (statistical forecasts, projected inventories, DRP,...).
+
+-   **display** some **insightful visualizations**, especially the ones I couldn't build with those BI solutions.
+
+I then started using the **R language**.
+
+## R language
+
+In 2015, I was still working in Singapore, and one of my colleagues from sanofi, Yannick, did some researches and came out with one idea : let's use a statistical programming language called R. The language, unknown to us at that time, seemed to be wonderful to solve our issues.
+
+**R is a popular open-source programming language and is specifically designed for statistical computing, data analysis, and high-quality graphics.** It is widely used by researchers, data scientists, and statisticians for its extensive libraries and robust data visualization tools. R consistently ranks among the top 10 programming languages worldwide.
+
+As per today, R is widely considered as the best programming language for pure statistical analysis and visualization.
+
+It's been now 10 years that I'm using R daily in my job in Supply Chain. The language, supported by a very active and vibrant users community, progresses very rapidly each year. It also became...my second passion (my first one being skateboarding!).
+
+I try to share this passion at work with my colleagues, and also with some students. I've been teaching some classes in masters in La Rochelle (a city on the west coast of France) for 5 years about how to use the R language in Supply Chain.
+
+*This book is about sharing this passion about data, supply chain, and R.*
+
+# R Shiny & BI tools
+
+```{r, include=FALSE}
+
+# ETL
+library(htmltools)
+
+# Table
+library(reactable)
+
+```
+
+Here is a little summary of the main features of R Shiny and Traditional BI tools.
+
+**R Shiny and traditional Business Intelligence (BI) tools** (e.g.,Microsoft Power BI,Tableau) **serve different strategic needs** :
+
+-   BI tools prioritize ease of use for rapid corporate reporting.
+
+-   R Shiny offers a full web framework for complex, code-driven analytical applications.
+
+So...how to choose?
+
+-   Choose R Shiny for bespoke, customized applications, or when complex statistical modeling is a core feature of the UI.
+
+-   Choose BI Tools for large-scale enterprise reporting, "self-service analytics for the masses", and projects where speed and ease of sharing are critical.
+
+```{r, echo=FALSE}
+
+# create data
+data <- data.frame(
+  Feature = c("<strong>Core Philosophy</strong>",
+              "<strong>Customization</strong>",
+              "<strong>Learning Curve</strong>",
+              "<strong>Analytics Depth</strong>",
+              "<strong>Speed to Deploy</strong>",
+              "<strong>Interactivity</strong>",
+              "<strong>Integration</strong>"
+              ),
+  
+  R_Shiny = c("Pro-Code: Full web framework for custom analytical apps",
+              "<span style='color:green'>High</span>: Total control over UI/UX with CSS/HTML/JS",
+              "<span style='color:red'>Steep</span>: Requires R programming and reactivity knowledge",
+              "<span style='color:green'>Deep</span>: Direct access to R's extensive statistical/ML libraries",
+              "<span style='color:red'>Slower</span>: Complex code increases development time. However, it's reproducible",
+              "<span style='color:green'>Dynamic</span>: Complex reactivity and custom user input workflows",
+              "Versatile: Can connect to any API or domain-specific source"
+              ),
+  
+  Traditional_BI = c("No/Low-Code: Drag-and-drop for rapid dashboarding",
+                     "Moderate: Limited to built-in templates and visuals",
+                     "Low: Intuitive for non-technical users and Excel experts",
+                     "Standard: Built-in functions; custom scripts are often secondary",
+              "Fast: Ideal for simple, repeatable monitoring dashboards",
+              "Structured: Standard filters, slicers, and drill-downs",
+              "Enterprise: Seamlessly fits into Microsoft/Salesforce ecosystems"
+              ),
+  stringsAsFactors = FALSE
+)
+
+# Table
+reactable(
+  data,
+  columns = list(
+    Feature = colDef(html = TRUE),
+    
+    R_Shiny = colDef(name = "R Shiny",
+                     html = TRUE),
+    
+    Traditional_BI = colDef(name = "Traditional BI")
+    
+  )
+)
+
+
+```
+
+# R Shiny & APS
+
+R Shiny is an excellent complement to an APS (Advanced Planning Software) solution. One of the **key benefits is : Rapid Prototyping & Flexibility**.
+
+-   R offers a very strong computing power.
+
+-   Using the R package `planr` we can calculate in a few seconds all the classic Demand and Supply Planning operations.
+
+-   Calculations can be run at different levels of granularity or aggregations, providing an excellent high-level decision-tool for the S&OP process.
+
+-   It’s possible to easily model an entire distribution network and run smoothly some end-to-end simulations.
+
+-   Finally, wrapped into a shiny app, and leveraging on the visual capabilities of R, we get a performant and tailor-made software to manage our Supply Chain Planning.
+
+R shiny provides agility, instead of being limited by some system’s initial design.
+
+It also allows data scientists to move from an R analysis to a functional, **interactive web app within hours or days**, making it ***ideal for testing new ideas before fully integrating them into** a rigid (and sometimes slow-moving) **APS***.
+
+Shiny apps also offer **superior interactivity** (e.g., reactive graphs, dynamic inputs) compared to static reports often generated by traditional systems. It turns analyses into **interactive dashboards that are easy to deploy over the web**. This can be a good way to **leverage some data and calculations provided by the APS, and to use R Shiny for the data visualization**.
+
+More about this in the coming pages!
