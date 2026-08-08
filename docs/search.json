@@ -1620,133 +1620,133 @@
   {
     "objectID": "create_functions.html",
     "href": "create_functions.html",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "",
     "text": "25 Introduction",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#what-is-a-function",
     "href": "create_functions.html#what-is-a-function",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "25.1 What is a function ?",
     "text": "25.1 What is a function ?\nA function is somehow like a macro in Excel :\n\na script of instructions that we execute\nand to execute it, we call the name of the macro, or here, the name of the function.\n\nIt contains several lines of code enclosed within a body.\nA function has :\n\nan input : a dataset, some variables\nan output : the result of the calculation, which could be different types of objects, for example a dataframe, a value, a list, a chart,…\n\nSo, functions are user defined pieces of code that perform a desired operation on given input(s) and return the output back to the user.\nSome interesting features :\n\nthe variables defined and declared inside the body are not available outside the body\nthe function definition defines one or more variables that can be passed by the caller of the function",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#why-should-we-create-a-function",
     "href": "create_functions.html#why-should-we-create-a-function",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "25.2 Why should we create a function?",
     "text": "25.2 Why should we create a function?\n\n“if you do the same thing more than 2 times, then you should create a function” Hadley Wickham (probably)\n\nImagine 2 (quite common) situations :\n\nyou execute more than 2 times the same data transformation during your data processing.\nyou work on different projects, and each project requires the same data transformation.\n\nEach time this transformation takes several (similar) lines of codes.\nBy creating and using a function, you will :\n\nkeep your ETL script lighter : calling only the name of the function instead of writing each time the different steps\nmake your code reusable and easier to maintain : you simply need to update the function, and not all the different scripts\n\nThe basic format of writing a function is :\n\nfunctionName &lt;- function(argumentA, argumentB) {\n  \n  # performs an operation\n  \n  # return a result\n  return(variablec)\n  \n  }\n\nThis contains :\n\nthe name of the function : here, functionName\nsome inputs : here argumentA and argumentB\nan output : here defined as “variableC”\n\nThen, to apply the function we will use the following syntax : functionName(argumentA, argumentB)\nAnd get the results.\nWriting a function in R is pretty simple; it’s like encapsulating some transformations between {}.\nLet’s have a look at it through 4 examples.",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#create-function",
     "href": "create_functions.html#create-function",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "27.1 Create function",
     "text": "27.1 Create function\nNow, let’s create a simple function to convert the stocks which are expressed in cases, into a common unit of measure (UoM) : 9L cases.\nTo do this conversion we need to express first the opening stocks in liters, and then divide by 9.\nSo : [opening_stocks_9LC] = ([opening_stocks_in_case] x [nb_bottles_case] x [size]) / 9\n\nconvert_actual_cases_into_9LC &lt;- function(data, \n                                          size,\n                                          nb_bottles_case,\n                                          opening_stock){\n \n# set a working df\ndf1 &lt;- data\n\n# calculate opening_stocks_9LC\ndf1$opening_stocks_9LC &lt;- (df1$opening_stocks_in_case * df1$nb_bottles_case * df1$size) / 9\n\n# keep results\nreturn(df1)\n\n\n}\n\nHow does it work?\n\nwe give a name to our function : “convert_actual_cases_into_9LC”\nwe define some inputs arguments :\n\na dataset : data\nsome variables of this dataset : size, nb_bottles_case, opening_stock\n\ninside the “body” of the function we perform a calculation\nwe get the result through the function return() : a dataframe",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#apply-function",
     "href": "create_functions.html#apply-function",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "27.2 Apply function",
     "text": "27.2 Apply function\nNow, let’s apply this function on the demo dataset stocks_datastocks_data.\n\n# apply on stocks_data\ndf1 &lt;- convert_actual_cases_into_9LC(data = stocks_data,\n                                     size = size,\n                                     nb_bottles_case = nb_bottles_case,\n                                     opening_stock = opening_stocks_in_case\n                                     )\n\n# see results\ndf1\n\n  product  size nb_bottles_case opening_stocks_in_case opening_stocks_9LC\n1  item 1 0.700              12                   1268          1183.4667\n2  item 2 0.200              24                    432           230.4000\n3  item 3 0.375              12                   2560          1280.0000\n4  item 4 0.500              12                    836           557.3333\n5  item 5 1.500               6                    513           513.0000\n6  item 6 3.000               4                    720           960.0000\n\n\nWe can see that on top of the original dataframe we now have an additional variable [opening_stocks_9LC], which corresponds to the conversion of the initial variable [opening_stocks_in_case] expressed in actual cases into 9 Liters cases.",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#create-function-1",
     "href": "create_functions.html#create-function-1",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "28.1 Create function",
     "text": "28.1 Create function\nNow, let’s add a few more features to our function :\n\nsort by decreasing opening stocks\ncalculate the percentage of the total stock that each item represents\n\n\nshare_total_stocks_9LC &lt;- function(data, \n                                   size,\n                                   nb_bottles_case,\n                                   opening_stock){\n \n# set a working df\ndf1 &lt;- data\n\n# calculate opening_stocks_9LC\ndf1$opening_stocks_9LC &lt;- (df1$opening_stocks_in_case * df1$nb_bottles_case * df1$size) / 9\n\n# sort by decreasing opening stocks\ndf1 &lt;- df1 |&gt; arrange(desc(opening_stocks_9LC))\n\n\n# calculate the percentage of the total stock that each item represents\ndf1$opening_stocks_9LC_pc &lt;- df1$opening_stocks_9LC / sum(df1$opening_stocks_9LC)\n\n\n# keep results\nreturn(df1)\n\n\n}",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#apply-function-1",
     "href": "create_functions.html#apply-function-1",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "28.2 Apply function",
     "text": "28.2 Apply function\nNow, let’s apply this function on the demo dataset stocks_datastocks_data.\n\n# apply on stocks_data\ndf1 &lt;- share_total_stocks_9LC(data = stocks_data,\n                                     size = size,\n                                     nb_bottles_case = nb_bottles_case,\n                                     opening_stock = opening_stocks_in_case\n                                     )\n\n# see results\ndf1\n\n  product  size nb_bottles_case opening_stocks_in_case opening_stocks_9LC\n1  item 3 0.375              12                   2560          1280.0000\n2  item 1 0.700              12                   1268          1183.4667\n3  item 6 3.000               4                    720           960.0000\n4  item 4 0.500              12                    836           557.3333\n5  item 5 1.500               6                    513           513.0000\n6  item 2 0.200              24                    432           230.4000\n  opening_stocks_9LC_pc\n1            0.27094535\n2            0.25051155\n3            0.20320901\n4            0.11797412\n5            0.10858981\n6            0.04877016\n\n\nWe now get 2 additional variables to the initial dataframe :\n\nopening_stocks_9LC\nopening_stocks_9LC_pc\n\nAlso, the data frame is sorted by [opening_stocks_9LC] descending.",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#create-function-2",
     "href": "create_functions.html#create-function-2",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "29.1 Create function",
     "text": "29.1 Create function\nLet’s add the code to create a chart within the function.\nWe aim to :\n\nconvert the stocks in 9 Liter cases\nsort by decreasing opening stocks\ncreate a column chart to display the results, using the R package highcharter\n\n\nchart_stocks_9LC &lt;- function(data, \n                             product,\n                             size,\n                             nb_bottles_case,\n                             opening_stock){\n \n# set a working df\ndf1 &lt;- data\n\n#-----------------------\n# Transform\n\n# calculate opening_stocks_9LC\ndf1$opening_stocks_9LC &lt;- (df1$opening_stocks_in_case * df1$nb_bottles_case * df1$size) / 9\n\n# sort by decreasing opening stocks\ndf1 &lt;- df1 |&gt; arrange(desc(opening_stocks_9LC))\n\n# formatting for a better display\ndf1$opening_stocks_9LC &lt;- as.integer(df1$opening_stocks_9LC)\n\n#-----------------------\n# Chart\n\nhighchart() |&gt; \n  hc_title(text = \"Stocks by Items\") |&gt;\n  hc_subtitle(text = \"in 9LC\") |&gt; \n  hc_add_theme(hc_theme_google()) |&gt;\n  \n  hc_xAxis(categories = df1$product) |&gt; \n  \n  hc_add_series(name = \"Stocks\", \n                color = \"steelblue\",\n                dataLabels = list(align = \"center\", enabled = TRUE),\n                data = df1$opening_stocks_9LC) |&gt;\n  \n  hc_chart(type = \"column\") \n\n}",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#apply-function-2",
     "href": "create_functions.html#apply-function-2",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "29.2 Apply function",
     "text": "29.2 Apply function\nNow, let’s apply this function on the demo dataset stocks_datastocks_data.\n\n# apply on stocks_data\nchart1 &lt;- chart_stocks_9LC(data = stocks_data,\n                        product = product,\n                        size = size,\n                        nb_bottles_case = nb_bottles_case,\n                        opening_stock = opening_stocks_in_case\n                        )\n\n# see results\nchart1\n\n\n\n\n\nThis function returns a chart as an output.",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#create-demo-dataset",
     "href": "create_functions.html#create-demo-dataset",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "30.1 Create demo dataset",
     "text": "30.1 Create demo dataset\nLet’s create a simple demo dataset with only 3 variables :\n\na period of time (a selected horizon)\nsome actual (historical) sales quantities\nsome calculated statistical forecasts quantities\n\n\n# create vectors\nperiod &lt;- c(\"2019-01-01\", \"2019-02-01\", \"2019-03-01\", \"2019-04-01\", \"2019-05-01\", \"2019-06-01\")\n\nactuals_qty &lt;- c(740, 934, 603, 468, 903, 901)\n\nforecasts_qty &lt;- c(802, 1016,  572,  405,  871,  938)\n\n\n# assemble\nmape_data &lt;- data.frame(period,\n                        actuals_qty,\n                        forecasts_qty)\n\nglimpse(mape_data)\n\nRows: 6\nColumns: 3\n$ period        &lt;chr&gt; \"2019-01-01\", \"2019-02-01\", \"2019-03-01\", \"2019-04-01\", …\n$ actuals_qty   &lt;dbl&gt; 740, 934, 603, 468, 903, 901\n$ forecasts_qty &lt;dbl&gt; 802, 1016, 572, 405, 871, 938",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#create-function-3",
     "href": "create_functions.html#create-function-3",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "30.2 Create function",
     "text": "30.2 Create function\nNow let’s create the function to calculate the MAPE :\n\n[absolute difference] between [actuals_qty] and [forecasts_qty]\nmean of the [absolute difference] over a selected horizon of time\n\nThen, display of the results as a percentage value.\n\ncalculate_mape &lt;- function(data, \n                           actuals_qty,\n                           forecasts_qty){\n \n# set a working df\ndf1 &lt;- data\n\n# calculate monthly difference\ndf1$delta &lt;- df1$forecasts_qty - df1$actuals_qty\ndf1$delta_pc &lt;- df1$delta / df1$actuals_qty\n\n# get the absolute percentage of error\ndf1$abs_delta_pc &lt;- abs(df1$delta_pc)\n\n# calculate the mean\nMAPE &lt;- mean(df1$abs_delta_pc)\nMAPE &lt;- percent(MAPE)\n\nreturn(MAPE)\n\n}",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
     "objectID": "create_functions.html#apply-function-3",
     "href": "create_functions.html#apply-function-3",
-    "title": "24  create_functions",
+    "title": "24  Create a function",
     "section": "30.3 Apply function",
     "text": "30.3 Apply function\n\n# apply on stocks_data\nmape1 &lt;- calculate_mape(data = mape_data,\n                         actuals_qty = actuals_qty,\n                         forecasts_qty = forecasts_qty\n                         )\n\n# see results\nmape1\n\n[1] \"7%\"\n\n\nThis time the function returns a value.\nWe find a MAPE of 7%, same value that we calculated during the Statistical Forecast MLR calculation.\nWe now can reuse this function to calculate the MAPE for other methods, such as Holts-Winter, ARIMA,…",
     "crumbs": [
       "Toolbox 4 | Function",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>create_functions</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Create a function</span>"
     ]
   },
   {
