@@ -2,24 +2,128 @@ project:
   type: book
 
 book:
+  cover-image: cover.png
+  page-footer: 
+    left: "Copyright 2026, Nicolas Nguyen | Single-User License. Resale Prohibited." 
+    right:
+      - icon: github
+        href: https://github.com/nguyennico/planr
+      - icon: link
+        href: https://niconguyen.quarto.pub/planr/about.html
+    background: light
   title: "Demand and Supply Planning with R"
   author: "Nicolas Nguyen"
-  date: "8/7/2026"
   chapters:
     - index.qmd
+    - text: "---"
+    - license_terms_of_use.qmd
+    - text: "---"
     - intro.qmd
+    - text: "---"
+    - part: "Get Started"
+      chapters: 
+        - 1_1_Get_Started_with_R.qmd
+        - 1_2_Get_Started_with_positron.qmd
+        - 1_3_Get_Started_with_Quarto.qmd
+    - text: "---"
+    - part: "Toolbox 1 | ETL"
+      chapters: 
+        - 2_1_ETL_Intro.qmd
+        - 2_2_ETL_Objects.qmd
+        - 2_3_ETL_Upload_Write.qmd
+        - 2_4_ETL_manipulating_dataframe.qmd
+        - 2_5_ETL_other_useful_functions.qmd
+    - text: "---"
+    - part: "ETL Practice"
+      chapters: 
+        - 3_1_ETL_practice1.qmd
+        - 3_2_ETL_practice2.qmd
+        - 3_3_ETL_practice3.qmd
+        - 3_4_ETL_practice4.qmd
+        - 3_5_ETL_practice5.qmd
+        - 3_6_ETL_practice6.qmd
+    - text: "---"
+    - part: "Toolbox 2 | Charts"
+      chapters: 
+        - 4_1_Charts_Intro.qmd
+        - 4_2_Charts_Classic_charts_highcharter.qmd
+        - 4_3_Charts_sankey.qmd
+        - 4_4_Charts_geomapping.qmd
+        - 4_5_Charts_flow_chart.qmd
+    - text: "---"
+    - part: "Toolbox 3 | Tables"
+      chapters: 
+        - 5_1_Table_Intro.qmd
+        - 5_2_reactable.qmd
+        - 5_3_reactablefmtr.qmd
+        - 5_4_other_tables.qmd
+    - text: "---"
+    - part: "Toolbox 4 | Function"
+      chapters: 
+        - create_functions.qmd
+    - text: "---"
+    - part: "planr package"
+      chapters: 
+        - 6_0_planr_Intro.qmd
+        - 6_1_planr_projected_inventories_and_coverages.qmd
+        - 6_2_planr_projected_inventories_portfolio_incl_OOS_Alerts.qmd
+        - 6_3_planr_DRP_Calculation.qmd
+        - 6_4_planr_SSL_stocks.qmd
+        - 6_5_planr_month_to_week.qmd
+        - 6_6_planr_month_to_weekx.qmd
+        - 6_7_planr_constrained_demand.qmd
+        - 6_8_planr_projected_in_transit.qmd
+        - 6_9_planr_proj_cov.qmd
+        - 6_10_planr_alloc_dmd.qmd
+    - text: "---"
+    - part: "Use Cases"
+      chapters: 
+        - 7_1_planr_Production_Plan_Charge_vs_Capacity.qmd
+        - 7_2_planr_End_to_End.qmd
+        - 7_3_planr_Distribution_Network_2_Levels_DRP.qmd
+        - 7_4_planr_bom.qmd
+    - text: "---"
+    - part: "Sales Forecasting"
+      chapters:
+        - 8_1_Sales_Forecasting_introduction.qmd
+        - 8_2_MLR_Forecasting.qmd
+        - 8_3_MLR_Portfolio_Forecasts.qmd
+        - 8_4_Holts_Winter_Forecasts.qmd
+        - 8_5_Arima_Forecasts.qmd
+        - 8_6_Machine_Learning_xgboost_Forecasts.qmd
+    - text: "---"
+    - part: "Sales Analysis"
+      chapters:
+        - 9_1_RFM_analysis.qmd
+    - text: "---"
+    - part: "Operational Research"
+      chapters:
+        - 10_1_Get_Started_with_lpSolve.qmd
+        - 10_2_Simple_Charge_Capacity_problem.qmd
+        - 10_3_Charge_Capacity_3_constraints.qmd
+    - text: "---"
+    - part: "Introduction to shiny"
+      chapters:
+        - 11_1_R_shiny_intro.qmd
+        - 11_2_a_very_simple_shiny_app.qmd
+        - 11_3_a_bit_more_about_shiny.qmd
+        - 11_4_shiny_app_drp_example.qmd
+        - 11_5_write_back_table.qmd
+    - text: "---"
     - summary.qmd
-    - references.qmd
+  appendices:
+    - tools.qmd
+    - glossary.qmd
+
 
 bibliography: references.bib
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-  pdf:
-    documentclass: scrreprt
+    theme: cosmo
+    embed-resources: true
+    toc: true
+    number-sections: true
 
 editor: visual
 
