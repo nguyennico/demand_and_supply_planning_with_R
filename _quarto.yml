@@ -11,12 +11,12 @@ book:
       - icon: link
         href: https://niconguyen.quarto.pub/planr/about.html
     background: light
-  title: "Demand and Supply Planning with R"
+  title: |
+    "Demand and Supply Planning with R"
+    <br><img src="cover.png" style="width: 120px; margin-top: 10px; margin-bottom: 10px;">
   author: "Nicolas Nguyen"
   chapters:
     - index.qmd
-    - text: "---"
-    - license_terms_of_use.qmd
     - text: "---"
     - intro.qmd
     - text: "---"
@@ -120,10 +120,12 @@ bibliography: references.bib
 
 format:
   html:
+    number-sections: true
     theme: cosmo
     embed-resources: true
     toc: true
-    number-sections: true
 
 editor: visual
 
+website:
+  google-analytics: "G-L9D67TK08N"
